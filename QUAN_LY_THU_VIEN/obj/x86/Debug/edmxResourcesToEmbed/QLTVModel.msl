@@ -1,0 +1,208 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="QUANLYTHUVIENModelStoreContainer" CdmEntityContainer="QUANLYTHUVIENEntities">
+    <EntitySetMapping Name="BOPHANs">
+      <EntityTypeMapping TypeName="QUANLYTHUVIENModel.BOPHAN">
+        <MappingFragment StoreEntitySet="BOPHAN">
+          <ScalarProperty Name="MABOPHAN" ColumnName="MABOPHAN" />
+          <ScalarProperty Name="TENBOPHAN" ColumnName="TENBOPHAN" />
+          <ScalarProperty Name="SODIENTHOAIBOPHAN" ColumnName="SODIENTHOAIBOPHAN" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DANGNHAPs">
+      <EntityTypeMapping TypeName="QUANLYTHUVIENModel.DANGNHAP">
+        <MappingFragment StoreEntitySet="DANGNHAP">
+          <ScalarProperty Name="MATAIKHOAN" ColumnName="MATAIKHOAN" />
+          <ScalarProperty Name="TENDANGNHAP" ColumnName="TENDANGNHAP" />
+          <ScalarProperty Name="MATKHAU" ColumnName="MATKHAU" />
+          <ScalarProperty Name="QUYENTRUYCAP" ColumnName="QUYENTRUYCAP" />
+          <ScalarProperty Name="SOLANDN" ColumnName="SOLANDN" />
+          <ScalarProperty Name="DOIMATKHAU" ColumnName="DOIMATKHAU" />
+          <ScalarProperty Name="MATKHAUBANDAU" ColumnName="MATKHAUBANDAU" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="GOPYDOCGIAs">
+      <EntityTypeMapping TypeName="QUANLYTHUVIENModel.GOPYDOCGIA">
+        <MappingFragment StoreEntitySet="GOPYDOCGIA">
+          <ScalarProperty Name="MAGOPY" ColumnName="MAGOPY" />
+          <ScalarProperty Name="MADOCGIA" ColumnName="MADOCGIA" />
+          <ScalarProperty Name="NOIDUNG" ColumnName="NOIDUNG" />
+          <ScalarProperty Name="TIEUDE" ColumnName="TIEUDE" />
+          <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+          <ScalarProperty Name="TIEPNHAN" ColumnName="TIEPNHAN" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="NGONNGUs">
+      <EntityTypeMapping TypeName="QUANLYTHUVIENModel.NGONNGU">
+        <MappingFragment StoreEntitySet="NGONNGU">
+          <ScalarProperty Name="MANGONNGU" ColumnName="MANGONNGU" />
+          <ScalarProperty Name="TENNGONNGU" ColumnName="TENNGONNGU" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="NHANVIENs">
+      <EntityTypeMapping TypeName="QUANLYTHUVIENModel.NHANVIEN">
+        <MappingFragment StoreEntitySet="NHANVIEN">
+          <ScalarProperty Name="MANHANVIEN" ColumnName="MANHANVIEN" />
+          <ScalarProperty Name="MABOPHAN" ColumnName="MABOPHAN" />
+          <ScalarProperty Name="TENNHANVIEN" ColumnName="TENNHANVIEN" />
+          <ScalarProperty Name="SODIENTHOAINHANVIEN" ColumnName="SODIENTHOAINHANVIEN" />
+          <ScalarProperty Name="DIACHINHANVIEN" ColumnName="DIACHINHANVIEN" />
+          <ScalarProperty Name="MATAIKHOAN" ColumnName="MATAIKHOAN" />
+          <ScalarProperty Name="GioiTinh" ColumnName="GioiTinh" />
+          <ScalarProperty Name="NGAYSINH" ColumnName="NGAYSINH" />
+          <ScalarProperty Name="CMND" ColumnName="CMND" />
+          <ScalarProperty Name="NGAYVAOLAM" ColumnName="NGAYVAOLAM" />
+          <ScalarProperty Name="TINHTRANG" ColumnName="TINHTRANG" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="NHOMDOCGIAs">
+      <EntityTypeMapping TypeName="QUANLYTHUVIENModel.NHOMDOCGIA">
+        <MappingFragment StoreEntitySet="NHOMDOCGIA">
+          <ScalarProperty Name="MANHOM" ColumnName="MANHOM" />
+          <ScalarProperty Name="MAQUYDINH" ColumnName="MAQUYDINH" />
+          <ScalarProperty Name="TENNHOM" ColumnName="TENNHOM" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PHIEUMUONTRAs">
+      <EntityTypeMapping TypeName="QUANLYTHUVIENModel.PHIEUMUONTRA">
+        <MappingFragment StoreEntitySet="PHIEUMUONTRA">
+          <ScalarProperty Name="MAPHIEU" ColumnName="MAPHIEU" />
+          <ScalarProperty Name="MADOCGIA" ColumnName="MADOCGIA" />
+          <ScalarProperty Name="MANHANVIEN" ColumnName="MANHANVIEN" />
+          <ScalarProperty Name="NGAYMUON" ColumnName="NGAYMUON" />
+          <ScalarProperty Name="NGAYTRA" ColumnName="NGAYTRA" />
+          <ScalarProperty Name="TIENPHAT" ColumnName="TIENPHAT" />
+          <ScalarProperty Name="TINHTRANG" ColumnName="TINHTRANG" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="QUYDINHs">
+      <EntityTypeMapping TypeName="QUANLYTHUVIENModel.QUYDINH">
+        <MappingFragment StoreEntitySet="QUYDINH">
+          <ScalarProperty Name="MAQUYDINH" ColumnName="MAQUYDINH" />
+          <ScalarProperty Name="SONGAYMUONTOIDA" ColumnName="SONGAYMUONTOIDA" />
+          <ScalarProperty Name="SOSACHMUONTOIDA" ColumnName="SOSACHMUONTOIDA" />
+          <ScalarProperty Name="SOTIENPHATTREMOTNGAY" ColumnName="SOTIENPHATTREMOTNGAY" />
+          <ScalarProperty Name="SOTIENPHATLAMHUSACH" ColumnName="SOTIENPHATLAMHUSACH" />
+          <ScalarProperty Name="SOTIENPHATLAMMATSACH" ColumnName="SOTIENPHATLAMMATSACH" />
+          <ScalarProperty Name="LEPHICAPTHE" ColumnName="LEPHICAPTHE" />
+          <ScalarProperty Name="LEPHIGIAHAN" ColumnName="LEPHIGIAHAN" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="THONGTINCUONSACHes">
+      <EntityTypeMapping TypeName="QUANLYTHUVIENModel.THONGTINCUONSACH">
+        <MappingFragment StoreEntitySet="THONGTINCUONSACH">
+          <ScalarProperty Name="MACUONSACH" ColumnName="MACUONSACH" />
+          <ScalarProperty Name="MADAUSACH" ColumnName="MADAUSACH" />
+          <ScalarProperty Name="NGAYNHAPSACH" ColumnName="NGAYNHAPSACH" />
+          <ScalarProperty Name="NGAYHUYSACH" ColumnName="NGAYHUYSACH" />
+          <ScalarProperty Name="TRANGTHAIMUON" ColumnName="TRANGTHAIMUON" />
+          <ScalarProperty Name="TRANGTHAIHUY" ColumnName="TRANGTHAIHUY" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="THONGTINDAUSACHes">
+      <EntityTypeMapping TypeName="QUANLYTHUVIENModel.THONGTINDAUSACH">
+        <MappingFragment StoreEntitySet="THONGTINDAUSACH">
+          <ScalarProperty Name="MADAUSACH" ColumnName="MADAUSACH" />
+          <ScalarProperty Name="MANGONNGU" ColumnName="MANGONNGU" />
+          <ScalarProperty Name="MANHAXUATBAN" ColumnName="MANHAXUATBAN" />
+          <ScalarProperty Name="MALOAIDDC" ColumnName="MALOAIDDC" />
+          <ScalarProperty Name="MATACGIA" ColumnName="MATACGIA" />
+          <ScalarProperty Name="MAKE" ColumnName="MAKE" />
+          <ScalarProperty Name="TENDAUSACH" ColumnName="TENDAUSACH" />
+          <ScalarProperty Name="NAMXUATBAN" ColumnName="NAMXUATBAN" />
+          <ScalarProperty Name="SOTRANG" ColumnName="SOTRANG" />
+          <ScalarProperty Name="MAISBN" ColumnName="MAISBN" />
+          <ScalarProperty Name="GIABIA" ColumnName="GIABIA" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="THONGTINDOCGIAs">
+      <EntityTypeMapping TypeName="QUANLYTHUVIENModel.THONGTINDOCGIA">
+        <MappingFragment StoreEntitySet="THONGTINDOCGIA">
+          <ScalarProperty Name="MADOCGIA" ColumnName="MADOCGIA" />
+          <ScalarProperty Name="MANHOM" ColumnName="MANHOM" />
+          <ScalarProperty Name="TENDOCGIA" ColumnName="TENDOCGIA" />
+          <ScalarProperty Name="GIOITINH" ColumnName="GIOITINH" />
+          <ScalarProperty Name="NGAYSINH" ColumnName="NGAYSINH" />
+          <ScalarProperty Name="TRINHDOHOCVAN" ColumnName="TRINHDOHOCVAN" />
+          <ScalarProperty Name="SOCMND" ColumnName="SOCMND" />
+          <ScalarProperty Name="NGHENGHIEP" ColumnName="NGHENGHIEP" />
+          <ScalarProperty Name="NOICONGTAC" ColumnName="NOICONGTAC" />
+          <ScalarProperty Name="SODIENTHOAIDOCGIA" ColumnName="SODIENTHOAIDOCGIA" />
+          <ScalarProperty Name="DIACHIDOCGIA" ColumnName="DIACHIDOCGIA" />
+          <ScalarProperty Name="NGAYDANGKY" ColumnName="NGAYDANGKY" />
+          <ScalarProperty Name="NGAYHETHAN" ColumnName="NGAYHETHAN" />
+          <ScalarProperty Name="TRANGTHAIDOCGIA" ColumnName="TRANGTHAIDOCGIA" />
+          <ScalarProperty Name="MATAIKHOAN" ColumnName="MATAIKHOAN" />
+          <ScalarProperty Name="HINHANH" ColumnName="HINHANH" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="THONGTINKESACHes">
+      <EntityTypeMapping TypeName="QUANLYTHUVIENModel.THONGTINKESACH">
+        <MappingFragment StoreEntitySet="THONGTINKESACH">
+          <ScalarProperty Name="MAKE" ColumnName="MAKE" />
+          <ScalarProperty Name="TENKE" ColumnName="TENKE" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="THONGTINLOAISACHes">
+      <EntityTypeMapping TypeName="QUANLYTHUVIENModel.THONGTINLOAISACH">
+        <MappingFragment StoreEntitySet="THONGTINLOAISACH">
+          <ScalarProperty Name="MALOAIDDC" ColumnName="MALOAIDDC" />
+          <ScalarProperty Name="TENLOAIDDC" ColumnName="TENLOAIDDC" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="THONGTINNHAXUATBANs">
+      <EntityTypeMapping TypeName="QUANLYTHUVIENModel.THONGTINNHAXUATBAN">
+        <MappingFragment StoreEntitySet="THONGTINNHAXUATBAN">
+          <ScalarProperty Name="MANHAXUATBAN" ColumnName="MANHAXUATBAN" />
+          <ScalarProperty Name="TENNHAXUATBAN" ColumnName="TENNHAXUATBAN" />
+          <ScalarProperty Name="DIACHINHAXUATBAN" ColumnName="DIACHINHAXUATBAN" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="THONGTINNOPPHIs">
+      <EntityTypeMapping TypeName="QUANLYTHUVIENModel.THONGTINNOPPHI">
+        <MappingFragment StoreEntitySet="THONGTINNOPPHI">
+          <ScalarProperty Name="MAPHINOP" ColumnName="MAPHINOP" />
+          <ScalarProperty Name="MADOCGIA" ColumnName="MADOCGIA" />
+          <ScalarProperty Name="PHIDINHKY" ColumnName="PHIDINHKY" />
+          <ScalarProperty Name="PHICAPTHE" ColumnName="PHICAPTHE" />
+          <ScalarProperty Name="PHATNOPTRE" ColumnName="PHATNOPTRE" />
+          <ScalarProperty Name="PHATHUSACH" ColumnName="PHATHUSACH" />
+          <ScalarProperty Name="PHATMATSACH" ColumnName="PHATMATSACH" />
+          <ScalarProperty Name="NGAYNOP" ColumnName="NGAYNOP" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="THONGTINSACHMUONs">
+      <EntityTypeMapping TypeName="QUANLYTHUVIENModel.THONGTINSACHMUON">
+        <MappingFragment StoreEntitySet="THONGTINSACHMUON">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="MAPHIEU" ColumnName="MAPHIEU" />
+          <ScalarProperty Name="MACUONSACH" ColumnName="MACUONSACH" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="THONGTINTACGIAs">
+      <EntityTypeMapping TypeName="QUANLYTHUVIENModel.THONGTINTACGIA">
+        <MappingFragment StoreEntitySet="THONGTINTACGIA">
+          <ScalarProperty Name="MATACGIA" ColumnName="MATACGIA" />
+          <ScalarProperty Name="TENTACGIA" ColumnName="TENTACGIA" />
+          <ScalarProperty Name="DIACHITACGIA" ColumnName="DIACHITACGIA" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

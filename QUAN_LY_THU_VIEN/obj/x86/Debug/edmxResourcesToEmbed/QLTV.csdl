@@ -1,0 +1,316 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="QUANLYTHUVIENModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="BOPHAN">
+    <Key>
+      <PropertyRef Name="MABOPHAN" />
+    </Key>
+    <Property Name="MABOPHAN" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="TENBOPHAN" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="SODIENTHOAIBOPHAN" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="NHANVIENs" Relationship="Self.FK_NHANVIEN_THUOC_BO__BOPHAN" FromRole="BOPHAN" ToRole="NHANVIEN" />
+  </EntityType>
+  <EntityType Name="DANGNHAP">
+    <Key>
+      <PropertyRef Name="MATAIKHOAN" />
+    </Key>
+    <Property Name="MATAIKHOAN" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="TENDANGNHAP" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="MATKHAU" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="QUYENTRUYCAP" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="SOLANDN" Type="Int32" Nullable="false" />
+    <Property Name="DOIMATKHAU" Type="Int32" Nullable="false" />
+    <Property Name="MATKHAUBANDAU" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="GOPYDOCGIA">
+    <Key>
+      <PropertyRef Name="MAGOPY" />
+    </Key>
+    <Property Name="MAGOPY" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="MADOCGIA" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="NOIDUNG" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
+    <Property Name="TIEUDE" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
+    <Property Name="EMAIL" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="TIEPNHAN" Type="Int32" />
+  </EntityType>
+  <EntityType Name="NGONNGU">
+    <Key>
+      <PropertyRef Name="MANGONNGU" />
+    </Key>
+    <Property Name="MANGONNGU" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="TENNGONNGU" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="NHANVIEN">
+    <Key>
+      <PropertyRef Name="MANHANVIEN" />
+    </Key>
+    <Property Name="MANHANVIEN" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="MABOPHAN" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="TENNHANVIEN" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="SODIENTHOAINHANVIEN" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+    <Property Name="DIACHINHANVIEN" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="MATAIKHOAN" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="GioiTinh" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="NGAYSINH" Type="DateTime" Precision="3" />
+    <Property Name="CMND" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="NGAYVAOLAM" Type="DateTime" Precision="3" />
+    <Property Name="TINHTRANG" Type="Int32" />
+    <NavigationProperty Name="BOPHAN" Relationship="Self.FK_NHANVIEN_THUOC_BO__BOPHAN" FromRole="NHANVIEN" ToRole="BOPHAN" />
+    <NavigationProperty Name="PHIEUMUONTRAs" Relationship="Self.FK_CHITIETP_RELATIONS_NHANVIEN" FromRole="NHANVIEN" ToRole="PHIEUMUONTRA" />
+  </EntityType>
+  <EntityType Name="NHOMDOCGIA">
+    <Key>
+      <PropertyRef Name="MANHOM" />
+    </Key>
+    <Property Name="MANHOM" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="MAQUYDINH" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="TENNHOM" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="QUYDINH" Relationship="Self.FK_NHOMDOCG_THUOC_QUY_QUYDINH" FromRole="NHOMDOCGIA" ToRole="QUYDINH" />
+    <NavigationProperty Name="THONGTINDOCGIAs" Relationship="Self.FK_THONGTIN_THUOC_NHO_NHOMDOCG" FromRole="NHOMDOCGIA" ToRole="THONGTINDOCGIA" />
+  </EntityType>
+  <EntityType Name="PHIEUMUONTRA">
+    <Key>
+      <PropertyRef Name="MAPHIEU" />
+    </Key>
+    <Property Name="MAPHIEU" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="MADOCGIA" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="MANHANVIEN" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="NGAYMUON" Type="DateTime" Precision="3" />
+    <Property Name="NGAYTRA" Type="DateTime" Precision="3" />
+    <Property Name="TIENPHAT" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="TINHTRANG" Type="Int32" />
+    <NavigationProperty Name="NHANVIEN" Relationship="Self.FK_CHITIETP_RELATIONS_NHANVIEN" FromRole="PHIEUMUONTRA" ToRole="NHANVIEN" />
+    <NavigationProperty Name="THONGTINDOCGIA" Relationship="Self.FK_CHITIETP_MUON_THONGTIN" FromRole="PHIEUMUONTRA" ToRole="THONGTINDOCGIA" />
+  </EntityType>
+  <EntityType Name="QUYDINH">
+    <Key>
+      <PropertyRef Name="MAQUYDINH" />
+    </Key>
+    <Property Name="MAQUYDINH" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="SONGAYMUONTOIDA" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="SOSACHMUONTOIDA" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="SOTIENPHATTREMOTNGAY" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="SOTIENPHATLAMHUSACH" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="SOTIENPHATLAMMATSACH" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="LEPHICAPTHE" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="LEPHIGIAHAN" Type="Decimal" Precision="18" Scale="0" />
+    <NavigationProperty Name="NHOMDOCGIAs" Relationship="Self.FK_NHOMDOCG_THUOC_QUY_QUYDINH" FromRole="QUYDINH" ToRole="NHOMDOCGIA" />
+  </EntityType>
+  <EntityType Name="THONGTINCUONSACH">
+    <Key>
+      <PropertyRef Name="MACUONSACH" />
+    </Key>
+    <Property Name="MACUONSACH" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="MADAUSACH" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="NGAYNHAPSACH" Type="DateTime" Precision="3" />
+    <Property Name="NGAYHUYSACH" Type="DateTime" Precision="3" />
+    <Property Name="TRANGTHAIMUON" Type="Int32" />
+    <Property Name="TRANGTHAIHUY" Type="Int32" />
+    <NavigationProperty Name="THONGTINDAUSACH" Relationship="Self.FK_THONGTIN_THUOC_DAU_THONGTIN" FromRole="THONGTINCUONSACH" ToRole="THONGTINDAUSACH" />
+  </EntityType>
+  <EntityType Name="THONGTINDAUSACH">
+    <Key>
+      <PropertyRef Name="MADAUSACH" />
+    </Key>
+    <Property Name="MADAUSACH" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="MANGONNGU" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="MANHAXUATBAN" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="MALOAIDDC" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="MATACGIA" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="MAKE" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="TENDAUSACH" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="NAMXUATBAN" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="SOTRANG" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="MAISBN" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="GIABIA" Type="Decimal" Precision="18" Scale="0" />
+    <NavigationProperty Name="THONGTINCUONSACHes" Relationship="Self.FK_THONGTIN_THUOC_DAU_THONGTIN" FromRole="THONGTINDAUSACH" ToRole="THONGTINCUONSACH" />
+  </EntityType>
+  <EntityType Name="THONGTINDOCGIA">
+    <Key>
+      <PropertyRef Name="MADOCGIA" />
+    </Key>
+    <Property Name="MADOCGIA" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="MANHOM" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="TENDOCGIA" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="GIOITINH" Type="Int32" />
+    <Property Name="NGAYSINH" Type="DateTime" Precision="3" />
+    <Property Name="TRINHDOHOCVAN" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="SOCMND" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="NGHENGHIEP" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="NOICONGTAC" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="SODIENTHOAIDOCGIA" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+    <Property Name="DIACHIDOCGIA" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="NGAYDANGKY" Type="DateTime" Precision="3" />
+    <Property Name="NGAYHETHAN" Type="DateTime" Precision="3" />
+    <Property Name="TRANGTHAIDOCGIA" Type="Int32" />
+    <Property Name="MATAIKHOAN" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="HINHANH" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="NHOMDOCGIA" Relationship="Self.FK_THONGTIN_THUOC_NHO_NHOMDOCG" FromRole="THONGTINDOCGIA" ToRole="NHOMDOCGIA" />
+    <NavigationProperty Name="PHIEUMUONTRAs" Relationship="Self.FK_CHITIETP_MUON_THONGTIN" FromRole="THONGTINDOCGIA" ToRole="PHIEUMUONTRA" />
+  </EntityType>
+  <EntityType Name="THONGTINKESACH">
+    <Key>
+      <PropertyRef Name="MAKE" />
+    </Key>
+    <Property Name="MAKE" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="TENKE" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="THONGTINLOAISACH">
+    <Key>
+      <PropertyRef Name="MALOAIDDC" />
+    </Key>
+    <Property Name="MALOAIDDC" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="TENLOAIDDC" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="THONGTINNHAXUATBAN">
+    <Key>
+      <PropertyRef Name="MANHAXUATBAN" />
+    </Key>
+    <Property Name="MANHAXUATBAN" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="TENNHAXUATBAN" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="DIACHINHAXUATBAN" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="THONGTINNOPPHI">
+    <Key>
+      <PropertyRef Name="MAPHINOP" />
+    </Key>
+    <Property Name="MAPHINOP" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="MADOCGIA" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="PHIDINHKY" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="PHICAPTHE" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="PHATNOPTRE" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="PHATHUSACH" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="PHATMATSACH" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="NGAYNOP" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="THONGTINSACHMUON">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="MAPHIEU" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="MACUONSACH" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="THONGTINTACGIA">
+    <Key>
+      <PropertyRef Name="MATACGIA" />
+    </Key>
+    <Property Name="MATACGIA" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="TENTACGIA" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="DIACHITACGIA" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <Association Name="FK_NHANVIEN_THUOC_BO__BOPHAN">
+    <End Role="BOPHAN" Type="Self.BOPHAN" Multiplicity="1" />
+    <End Role="NHANVIEN" Type="Self.NHANVIEN" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="BOPHAN">
+        <PropertyRef Name="MABOPHAN" />
+      </Principal>
+      <Dependent Role="NHANVIEN">
+        <PropertyRef Name="MABOPHAN" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CHITIETP_RELATIONS_NHANVIEN">
+    <End Role="NHANVIEN" Type="Self.NHANVIEN" Multiplicity="1" />
+    <End Role="PHIEUMUONTRA" Type="Self.PHIEUMUONTRA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="NHANVIEN">
+        <PropertyRef Name="MANHANVIEN" />
+      </Principal>
+      <Dependent Role="PHIEUMUONTRA">
+        <PropertyRef Name="MANHANVIEN" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_NHOMDOCG_THUOC_QUY_QUYDINH">
+    <End Role="QUYDINH" Type="Self.QUYDINH" Multiplicity="0..1" />
+    <End Role="NHOMDOCGIA" Type="Self.NHOMDOCGIA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="QUYDINH">
+        <PropertyRef Name="MAQUYDINH" />
+      </Principal>
+      <Dependent Role="NHOMDOCGIA">
+        <PropertyRef Name="MAQUYDINH" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_THONGTIN_THUOC_NHO_NHOMDOCG">
+    <End Role="NHOMDOCGIA" Type="Self.NHOMDOCGIA" Multiplicity="1" />
+    <End Role="THONGTINDOCGIA" Type="Self.THONGTINDOCGIA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="NHOMDOCGIA">
+        <PropertyRef Name="MANHOM" />
+      </Principal>
+      <Dependent Role="THONGTINDOCGIA">
+        <PropertyRef Name="MANHOM" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CHITIETP_MUON_THONGTIN">
+    <End Role="THONGTINDOCGIA" Type="Self.THONGTINDOCGIA" Multiplicity="1" />
+    <End Role="PHIEUMUONTRA" Type="Self.PHIEUMUONTRA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="THONGTINDOCGIA">
+        <PropertyRef Name="MADOCGIA" />
+      </Principal>
+      <Dependent Role="PHIEUMUONTRA">
+        <PropertyRef Name="MADOCGIA" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_THONGTIN_THUOC_DAU_THONGTIN">
+    <End Role="THONGTINDAUSACH" Type="Self.THONGTINDAUSACH" Multiplicity="1" />
+    <End Role="THONGTINCUONSACH" Type="Self.THONGTINCUONSACH" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="THONGTINDAUSACH">
+        <PropertyRef Name="MADAUSACH" />
+      </Principal>
+      <Dependent Role="THONGTINCUONSACH">
+        <PropertyRef Name="MADAUSACH" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="QUANLYTHUVIENEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="BOPHANs" EntityType="Self.BOPHAN" />
+    <EntitySet Name="DANGNHAPs" EntityType="Self.DANGNHAP" />
+    <EntitySet Name="GOPYDOCGIAs" EntityType="Self.GOPYDOCGIA" />
+    <EntitySet Name="NGONNGUs" EntityType="Self.NGONNGU" />
+    <EntitySet Name="NHANVIENs" EntityType="Self.NHANVIEN" />
+    <EntitySet Name="NHOMDOCGIAs" EntityType="Self.NHOMDOCGIA" />
+    <EntitySet Name="PHIEUMUONTRAs" EntityType="Self.PHIEUMUONTRA" />
+    <EntitySet Name="QUYDINHs" EntityType="Self.QUYDINH" />
+    <EntitySet Name="THONGTINCUONSACHes" EntityType="Self.THONGTINCUONSACH" />
+    <EntitySet Name="THONGTINDAUSACHes" EntityType="Self.THONGTINDAUSACH" />
+    <EntitySet Name="THONGTINDOCGIAs" EntityType="Self.THONGTINDOCGIA" />
+    <EntitySet Name="THONGTINKESACHes" EntityType="Self.THONGTINKESACH" />
+    <EntitySet Name="THONGTINLOAISACHes" EntityType="Self.THONGTINLOAISACH" />
+    <EntitySet Name="THONGTINNHAXUATBANs" EntityType="Self.THONGTINNHAXUATBAN" />
+    <EntitySet Name="THONGTINNOPPHIs" EntityType="Self.THONGTINNOPPHI" />
+    <EntitySet Name="THONGTINSACHMUONs" EntityType="Self.THONGTINSACHMUON" />
+    <EntitySet Name="THONGTINTACGIAs" EntityType="Self.THONGTINTACGIA" />
+    <AssociationSet Name="FK_NHANVIEN_THUOC_BO__BOPHAN" Association="Self.FK_NHANVIEN_THUOC_BO__BOPHAN">
+      <End Role="BOPHAN" EntitySet="BOPHANs" />
+      <End Role="NHANVIEN" EntitySet="NHANVIENs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CHITIETP_RELATIONS_NHANVIEN" Association="Self.FK_CHITIETP_RELATIONS_NHANVIEN">
+      <End Role="NHANVIEN" EntitySet="NHANVIENs" />
+      <End Role="PHIEUMUONTRA" EntitySet="PHIEUMUONTRAs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_NHOMDOCG_THUOC_QUY_QUYDINH" Association="Self.FK_NHOMDOCG_THUOC_QUY_QUYDINH">
+      <End Role="QUYDINH" EntitySet="QUYDINHs" />
+      <End Role="NHOMDOCGIA" EntitySet="NHOMDOCGIAs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_THONGTIN_THUOC_NHO_NHOMDOCG" Association="Self.FK_THONGTIN_THUOC_NHO_NHOMDOCG">
+      <End Role="NHOMDOCGIA" EntitySet="NHOMDOCGIAs" />
+      <End Role="THONGTINDOCGIA" EntitySet="THONGTINDOCGIAs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CHITIETP_MUON_THONGTIN" Association="Self.FK_CHITIETP_MUON_THONGTIN">
+      <End Role="THONGTINDOCGIA" EntitySet="THONGTINDOCGIAs" />
+      <End Role="PHIEUMUONTRA" EntitySet="PHIEUMUONTRAs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_THONGTIN_THUOC_DAU_THONGTIN" Association="Self.FK_THONGTIN_THUOC_DAU_THONGTIN">
+      <End Role="THONGTINDAUSACH" EntitySet="THONGTINDAUSACHes" />
+      <End Role="THONGTINCUONSACH" EntitySet="THONGTINCUONSACHes" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
