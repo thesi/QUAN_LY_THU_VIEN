@@ -50,7 +50,7 @@
             // tbxTenNhom
             // 
             this.tbxTenNhom.Enabled = false;
-            this.tbxTenNhom.Location = new System.Drawing.Point(142, 82);
+            this.tbxTenNhom.Location = new System.Drawing.Point(157, 87);
             this.tbxTenNhom.Name = "tbxTenNhom";
             this.tbxTenNhom.Size = new System.Drawing.Size(138, 20);
             this.tbxTenNhom.TabIndex = 1;
@@ -58,7 +58,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 27);
+            this.label1.Location = new System.Drawing.Point(12, 42);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(70, 13);
             this.label1.TabIndex = 2;
@@ -67,7 +67,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(12, 85);
+            this.label2.Location = new System.Drawing.Point(12, 89);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(81, 13);
             this.label2.TabIndex = 3;
@@ -76,7 +76,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(15, 149);
+            this.label3.Location = new System.Drawing.Point(12, 137);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(121, 13);
             this.label3.TabIndex = 4;
@@ -87,9 +87,9 @@
             this.cbbTenNhomChuyen.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbbTenNhomChuyen.Enabled = false;
             this.cbbTenNhomChuyen.FormattingEnabled = true;
-            this.cbbTenNhomChuyen.Location = new System.Drawing.Point(142, 146);
+            this.cbbTenNhomChuyen.Location = new System.Drawing.Point(157, 134);
             this.cbbTenNhomChuyen.Name = "cbbTenNhomChuyen";
-            this.cbbTenNhomChuyen.Size = new System.Drawing.Size(140, 21);
+            this.cbbTenNhomChuyen.Size = new System.Drawing.Size(138, 21);
             this.cbbTenNhomChuyen.TabIndex = 5;
             this.cbbTenNhomChuyen.MouseClick += new System.Windows.Forms.MouseEventHandler(this.cbbTenNhomChuyen_MouseClick);
             // 
@@ -99,7 +99,7 @@
             this.btnChuyenNhom.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.btnChuyenNhom.Location = new System.Drawing.Point(61, 208);
             this.btnChuyenNhom.Name = "btnChuyenNhom";
-            this.btnChuyenNhom.Size = new System.Drawing.Size(85, 62);
+            this.btnChuyenNhom.Size = new System.Drawing.Size(93, 62);
             this.btnChuyenNhom.TabIndex = 6;
             this.btnChuyenNhom.Text = "Chuyển";
             this.btnChuyenNhom.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -123,9 +123,9 @@
             // 
             this.cbbMaDocGia.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbbMaDocGia.FormattingEnabled = true;
-            this.cbbMaDocGia.Location = new System.Drawing.Point(142, 24);
+            this.cbbMaDocGia.Location = new System.Drawing.Point(157, 39);
             this.cbbMaDocGia.Name = "cbbMaDocGia";
-            this.cbbMaDocGia.Size = new System.Drawing.Size(140, 21);
+            this.cbbMaDocGia.Size = new System.Drawing.Size(138, 21);
             this.cbbMaDocGia.TabIndex = 8;
             this.cbbMaDocGia.SelectedIndexChanged += new System.EventHandler(this.cbbMaDocGia_SelectedIndexChanged);
             this.cbbMaDocGia.TextChanged += new System.EventHandler(this.cbbMaDocGia_TextChanged);

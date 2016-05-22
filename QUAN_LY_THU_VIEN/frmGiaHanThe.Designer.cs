@@ -56,7 +56,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(17, 35);
+            this.label1.Location = new System.Drawing.Point(20, 35);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(70, 13);
             this.label1.TabIndex = 13;
@@ -85,7 +85,7 @@
             this.btnGiaHan.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.btnGiaHan.Location = new System.Drawing.Point(62, 195);
             this.btnGiaHan.Name = "btnGiaHan";
-            this.btnGiaHan.Size = new System.Drawing.Size(89, 58);
+            this.btnGiaHan.Size = new System.Drawing.Size(86, 58);
             this.btnGiaHan.TabIndex = 17;
             this.btnGiaHan.Text = "Gia Hạn\r\n";
             this.btnGiaHan.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -108,7 +108,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(17, 121);
+            this.label3.Location = new System.Drawing.Point(20, 121);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(110, 13);
             this.label3.TabIndex = 19;

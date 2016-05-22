@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmVPTreSach));
             this.label4 = new System.Windows.Forms.Label();
             this.tbxTenDG = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
@@ -294,9 +295,10 @@
             this.Controls.Add(this.tbxTenNhom);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.tbxMaDG);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmVPTreSach";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "frmVPTreSach";
+            this.Text = "Vi phạm ";
             this.Load += new System.EventHandler(this.frmVPTreSach_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

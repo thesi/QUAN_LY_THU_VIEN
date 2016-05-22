@@ -79,9 +79,9 @@
             this.btnCancel.ForeColor = System.Drawing.Color.Black;
             this.btnCancel.Image = global::QUAN_LY_THU_VIEN.Properties.Resources._1364801780_button_cancel;
             this.btnCancel.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnCancel.Location = new System.Drawing.Point(223, 131);
+            this.btnCancel.Location = new System.Drawing.Point(182, 141);
             this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(80, 84);
+            this.btnCancel.Size = new System.Drawing.Size(68, 53);
             this.btnCancel.TabIndex = 3;
             this.btnCancel.Text = "Thoát";
             this.btnCancel.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -92,11 +92,11 @@
             // 
             this.btnOk.FlatAppearance.BorderSize = 0;
             this.btnOk.ForeColor = System.Drawing.Color.Black;
-            this.btnOk.Image = global::QUAN_LY_THU_VIEN.Properties.Resources.Dang_nhap;
+            this.btnOk.Image = global::QUAN_LY_THU_VIEN.Properties.Resources.login;
             this.btnOk.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnOk.Location = new System.Drawing.Point(115, 131);
+            this.btnOk.Location = new System.Drawing.Point(62, 141);
             this.btnOk.Name = "btnOk";
-            this.btnOk.Size = new System.Drawing.Size(90, 84);
+            this.btnOk.Size = new System.Drawing.Size(70, 53);
             this.btnOk.TabIndex = 2;
             this.btnOk.Text = "Đăng Nhập";
             this.btnOk.TextAlign = System.Drawing.ContentAlignment.BottomCenter;

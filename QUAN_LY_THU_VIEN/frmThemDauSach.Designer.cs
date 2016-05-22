@@ -99,9 +99,9 @@
             // 
             this.button2.Image = global::QUAN_LY_THU_VIEN.Properties.Resources._1364801780_button_cancel;
             this.button2.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.button2.Location = new System.Drawing.Point(487, 303);
+            this.button2.Location = new System.Drawing.Point(476, 303);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(63, 54);
+            this.button2.Size = new System.Drawing.Size(74, 54);
             this.button2.TabIndex = 3;
             this.button2.Text = "Thoát";
             this.button2.TextAlign = System.Drawing.ContentAlignment.BottomCenter;

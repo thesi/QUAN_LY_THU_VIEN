@@ -130,7 +130,7 @@
             this.btnHuy.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.btnHuy.Location = new System.Drawing.Point(220, 207);
             this.btnHuy.Name = "btnHuy";
-            this.btnHuy.Size = new System.Drawing.Size(97, 64);
+            this.btnHuy.Size = new System.Drawing.Size(99, 64);
             this.btnHuy.TabIndex = 9;
             this.btnHuy.Text = "Hủy ";
             this.btnHuy.TextAlign = System.Drawing.ContentAlignment.BottomCenter;

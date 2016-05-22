@@ -47,7 +47,7 @@
             // 
             this.btnHuy.Image = global::QUAN_LY_THU_VIEN.Properties.Resources._1364801780_button_cancel;
             this.btnHuy.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnHuy.Location = new System.Drawing.Point(188, 257);
+            this.btnHuy.Location = new System.Drawing.Point(203, 257);
             this.btnHuy.Name = "btnHuy";
             this.btnHuy.Size = new System.Drawing.Size(92, 55);
             this.btnHuy.TabIndex = 11;
@@ -147,9 +147,9 @@
             // 
             this.btnChuyenNhom.Image = global::QUAN_LY_THU_VIEN.Properties.Resources._1364801959_secure_server_px_png;
             this.btnChuyenNhom.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnChuyenNhom.Location = new System.Drawing.Point(33, 257);
+            this.btnChuyenNhom.Location = new System.Drawing.Point(48, 257);
             this.btnChuyenNhom.Name = "btnChuyenNhom";
-            this.btnChuyenNhom.Size = new System.Drawing.Size(98, 55);
+            this.btnChuyenNhom.Size = new System.Drawing.Size(92, 55);
             this.btnChuyenNhom.TabIndex = 10;
             this.btnChuyenNhom.Text = "Khóa";
             this.btnChuyenNhom.TextAlign = System.Drawing.ContentAlignment.BottomCenter;

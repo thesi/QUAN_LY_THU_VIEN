@@ -266,7 +266,7 @@
             this.Controls.Add(this.tbxMaDG);
             this.Name = "frmVPMatSach";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "frmVPMatSach";
+            this.Text = "Vi phạm mất sách";
             this.Load += new System.EventHandler(this.frmVPMatSach_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

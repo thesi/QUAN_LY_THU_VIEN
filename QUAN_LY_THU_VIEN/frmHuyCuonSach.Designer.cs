@@ -49,9 +49,9 @@
             // 
             this.button1.Image = global::QUAN_LY_THU_VIEN.Properties.Resources._1;
             this.button1.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.button1.Location = new System.Drawing.Point(188, 282);
+            this.button1.Location = new System.Drawing.Point(201, 282);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(102, 55);
+            this.button1.Size = new System.Drawing.Size(89, 55);
             this.button1.TabIndex = 0;
             this.button1.Text = "Hủy sách";
             this.button1.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -147,9 +147,9 @@
             // 
             this.button2.Image = global::QUAN_LY_THU_VIEN.Properties.Resources._1364801780_button_cancel;
             this.button2.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.button2.Location = new System.Drawing.Point(295, 282);
+            this.button2.Location = new System.Drawing.Point(308, 282);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(102, 55);
+            this.button2.Size = new System.Drawing.Size(89, 55);
             this.button2.TabIndex = 11;
             this.button2.Text = "Thoát";
             this.button2.TextAlign = System.Drawing.ContentAlignment.BottomCenter;

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmXacNhanThongTin));
             this.label1 = new System.Windows.Forms.Label();
             this.tbxMaDG = new System.Windows.Forms.TextBox();
             this.btnXacNhan = new System.Windows.Forms.Button();
@@ -222,9 +223,10 @@
             this.Controls.Add(this.btnXacNhan);
             this.Controls.Add(this.tbxMaDG);
             this.Controls.Add(this.label1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmXacNhanThongTin";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "frmXacNhanThongTin";
+            this.Text = "Xác nhận thông tin";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbxHinh)).EndInit();
