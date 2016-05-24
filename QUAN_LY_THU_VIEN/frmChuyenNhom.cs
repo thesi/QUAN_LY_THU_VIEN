@@ -49,42 +49,26 @@ namespace QUAN_LY_THU_VIEN
 
         private void cbbMaDocGia_TextChanged(object sender, EventArgs e)
         {
-           
-            SqlConnection Con = Conn.GetCon();
-            Con.Open();
-            string a = @"select
-                                nhomdocgia.tennhom, thongtindocgia.tendocgia,thongtindocgia.ngaysinh, thongtindocgia.sodienthoaidocgia 
-                         from nhomdocgia,thongtindocgia
-                        where nhomdocgia.manhom = thongtindocgia.manhom 
-                              and thongtindocgia.madocgia = '"+ cbbMaDocGia.Text +"'";
-            SqlCommand cmd = new SqlCommand(a, Con);
-            SqlDataReader reader = cmd.ExecuteReader();
-            string nhom = "";
-            string ten = "";
-            string ngaysinh = "";
-            string sdt = "";
-            while (reader.Read())
+            using (QUANLYTHUVIENEntities db = new QUANLYTHUVIENEntities())
             {
-                nhom = reader.GetValue(0).ToString();
-                ten = reader.GetValue(1).ToString();
-                ngaysinh = reader.GetValue(2).ToString();
-                sdt = reader.GetValue(3).ToString();
+                DataRow row = ((DataRowView) cbbMaDocGia.SelectedItem).Row;
+                String madocgia = row[0].ToString();
+                var chuyennhomQuery = from nhomdocgia in db.NHOMDOCGIAs
+                    join thongtindocgia in db.THONGTINDOCGIAs
+                        on nhomdocgia.MANHOM equals thongtindocgia.MANHOM
+                    where thongtindocgia.MADOCGIA == madocgia
+                                      select new
+                    {
+                        nhomdocgia.TENNHOM, thongtindocgia.TENDOCGIA, thongtindocgia.NGAYSINH, thongtindocgia.SODIENTHOAIDOCGIA
+                    };
+                var obj = chuyennhomQuery.Single();
+                   
+                tbxTenNhom.Text = obj.TENNHOM;
+                tbxHoTen.Text = obj.TENDOCGIA;
+                tbxNgaySinh.Text = obj.NGAYSINH.ToString();
+                tbxSDT.Text = obj.SODIENTHOAIDOCGIA;
             }
-            
-            reader.Close();
-            Con.Close();
-            tbxTenNhom.Text = "" + nhom;
-            tbxHoTen.Text = "" + ten;
-            tbxNgaySinh.Text = "" + ngaysinh;
-            tbxSDT.Text = "" + sdt;
-
             cbbTenNhomChuyen.Enabled = true;
-        }
-
-        private void cbbMaDocGia_MouseClick(object sender, MouseEventArgs e)
-        {
-            
-           
         }
 
         private void cbbTenNhomChuyen_MouseClick(object sender, MouseEventArgs e)
@@ -95,19 +79,21 @@ namespace QUAN_LY_THU_VIEN
 
         private void btnChuyenNhom_Click(object sender, EventArgs e)
         {
-            SqlConnection Con = Conn.GetCon();
-            Con.Open();
-            string a = "select manhom from nhomdocgia where tennhom =N'"+cbbTenNhomChuyen.Text.ToString()+"'";
-            SqlCommand cmd = new SqlCommand(a, Con);
-            SqlDataReader reader = cmd.ExecuteReader();
-            reader.Read();
-            string b = reader.GetValue(0).ToString();
-            reader.Close();
-            
-            SqlCommand cmd1 = new SqlCommand("update thongtindocgia set Manhom = '"+ b +"' where madocgia = '"+ cbbMaDocGia.Text.ToString() +"' ", Con);
-            SqlDataAdapter da1 = new SqlDataAdapter(cmd1);
-            DataSet ds1 = new DataSet();
-            da1.Fill(ds1);
+            using (QUANLYTHUVIENEntities db = new QUANLYTHUVIENEntities())
+            {
+                var manhomQuery = from nhomdocgia in db.NHOMDOCGIAs
+                    where nhomdocgia.TENNHOM == cbbTenNhomChuyen.Text
+                    select nhomdocgia.MANHOM;
+                string manhom = manhomQuery.Single();
+
+                var thongtindocgiaQuery = from thongtindocgia in db.THONGTINDOCGIAs
+                    where thongtindocgia.MADOCGIA == cbbMaDocGia.Text
+                    select thongtindocgia;
+                THONGTINDOCGIA ttdgCapnhat = thongtindocgiaQuery.Single();
+                ttdgCapnhat.MANHOM = manhom;
+                db.SaveChanges();
+            }
+
             MessageBox.Show("Đã chuyển thành công.");
             this.Close();
         }

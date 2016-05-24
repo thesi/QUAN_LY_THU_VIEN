@@ -10,11 +10,6 @@ namespace QUAN_LY_THU_VIEN
 {
    public class Func : Conn
     {
-        /* public SqlConnection GetCon()
-         {
-             return new SqlConnection("Data Source=.\\SQLEXPRESS;AttachDbFilename=D:\\Du Lieu\\ViRus\\QUANLYDULICH.mdf;Integrated Security=True;User Instance=True");
-
-         }*/
         public static byte[] encryptData(string data)
         {
             System.Security.Cryptography.MD5CryptoServiceProvider md5Hasher = new System.Security.Cryptography.MD5CryptoServiceProvider();

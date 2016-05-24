@@ -83,7 +83,7 @@ namespace QUAN_LY_THU_VIEN
             Con.Open();
             string a = "select max(mataikhoan) from DangNhap";
             SqlCommand cmd = new SqlCommand(a, Con);
-           SqlDataReader reader = cmd.ExecuteReader();
+            SqlDataReader reader = cmd.ExecuteReader();
             reader.Read();
             string b = reader.GetValue(0).ToString();
             Con.Close();
@@ -217,26 +217,17 @@ namespace QUAN_LY_THU_VIEN
 
         private void cbbChonNhom_SelectedIndexChanged(object sender, EventArgs e)
         {
-            
-                SqlConnection Con = Conn.GetCon();
-                Con.Open();
-                string a = "select lephicapthe from quydinh,nhomdocgia where  quydinh.maquydinh = nhomdocgia.maquydinh and nhomdocgia.tennhom = N'" + cbbChonNhom.Text.ToString() + "'";
-                SqlCommand cmd = new SqlCommand(a, Con);
-                SqlDataReader reader = cmd.ExecuteReader();
-                if (reader.Read())
+            using (QUANLYTHUVIENEntities db = new QUANLYTHUVIENEntities())
+            {
+                var lephicaptheQuery = from quydinh in db.QUYDINHs
+                    join nhomdocgia in db.NHOMDOCGIAs on quydinh.MAQUYDINH equals nhomdocgia.MAQUYDINH 
+                    select  quydinh.LEPHICAPTHE;
+                if (lephicaptheQuery.Any())
                 {
-                    string b = reader.GetValue(0).ToString();
-                    lblPhiNhom.Text = "" + b;
-                    Con.Close();
+                    lblPhiNhom.Text = lephicaptheQuery.Single().ToString();
                 }
-                else
-                {
-                    Con.Close();
-                    lblPhiNhom.Text = "0";
-                }
+                else lblPhiNhom.Text = "0";
+            }
         }
-        
-
-
     }
 }

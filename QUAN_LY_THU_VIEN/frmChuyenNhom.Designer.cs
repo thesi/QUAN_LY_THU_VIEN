@@ -129,7 +129,6 @@
             this.cbbMaDocGia.TabIndex = 8;
             this.cbbMaDocGia.SelectedIndexChanged += new System.EventHandler(this.cbbMaDocGia_SelectedIndexChanged);
             this.cbbMaDocGia.TextChanged += new System.EventHandler(this.cbbMaDocGia_TextChanged);
-            this.cbbMaDocGia.MouseClick += new System.Windows.Forms.MouseEventHandler(this.cbbMaDocGia_MouseClick);
             this.cbbMaDocGia.MouseLeave += new System.EventHandler(this.cbbMaDocGia_MouseLeave);
             // 
             // groupBox1

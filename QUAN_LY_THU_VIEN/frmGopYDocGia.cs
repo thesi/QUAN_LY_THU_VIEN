@@ -20,7 +20,21 @@ namespace QUAN_LY_THU_VIEN
         private void frmGopYDocGia_Load(object sender, EventArgs e)
         {
             lblUser.Text = frmMain.bientoancuc.bienxy;
-            SqlConnection Con = Conn.GetCon();
+
+            using (QUANLYTHUVIENEntities db = new QUANLYTHUVIENEntities())
+            {
+                var thongtindocgiaQuery = from thongtindocgia in db.THONGTINDOCGIAs
+                    join dangnhap in db.DANGNHAPs on thongtindocgia.MATAIKHOAN equals dangnhap.MATAIKHOAN
+                    where dangnhap.TENDANGNHAP == lblUser.Text
+                    select new {thongtindocgia.TENDOCGIA, thongtindocgia.MADOCGIA};
+                var obj = thongtindocgiaQuery.Single();
+
+                lblMaDocGia.Text = obj.MADOCGIA;
+                lblTenDocGia.Text = obj.TENDOCGIA;
+            }
+
+            
+/*            SqlConnection Con = Conn.GetCon();
             Con.Open();
             string a = @"select thongtindocgia.madocgia, thongtindocgia.TenDocGia from ThongTinDocGia, DangNhap
                         where thongtindocgia.mataikhoan = dangnhap.mataikhoan and dangnhap.tendangnhap = '" + lblUser.Text.ToString() + "'";
@@ -35,9 +49,9 @@ namespace QUAN_LY_THU_VIEN
             }
             Con.Close();
             lblMaDocGia.Text = b.ToString();
-            lblTenDocGia.Text = d.ToString();
+            lblTenDocGia.Text = d.ToString();*/
         }
-        void ThemMaGopY()
+        string ThemMaGopY()
         {
             SqlConnection Con = Conn.GetCon();
             Con.Open();
@@ -62,14 +76,11 @@ namespace QUAN_LY_THU_VIEN
                 f += c[j].ToString();
             }
             b = "GY" + f + e;
-            SqlCommand cmd1 = new SqlCommand("insert into GOPYDOCGIA(maGOPY) values('" + b.ToString() + "')", Con);
-            SqlDataAdapter da = new SqlDataAdapter(cmd1);
-            DataSet ds = new DataSet();
-            da.Fill(ds);
+            return b;
         }
         private void btnGopY_Click(object sender, EventArgs e)
         {
-             SqlConnection Con = Conn.GetCon();
+            SqlConnection Con = Conn.GetCon();
             Con.Open();
             ThemMaGopY();
             SqlCommand cmd = new SqlCommand("update GopYDocGia set MaDocGia = '"+ lblMaDocGia.Text +"', NoiDung = '"+ tbxGopY.Text +"', tieude = '"+ tbxTieuDe.Text+"', email = '"+ tbxEmail.Text +"' where magopy = (select max(magopy) from gopydocgia)", Con);

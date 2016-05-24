@@ -20,17 +20,20 @@ namespace QUAN_LY_THU_VIEN
 
         private void frmDoiMatKhau_Load(object sender, EventArgs e)
         {
-            SqlConnection Con = Conn.GetCon();
-            Con.Open();
-            string a = "select doimatkhau from dangnhap where tendangnhap = '" + lblUserName.Text + "'";
-            SqlCommand cmd1 = new SqlCommand(a, Con);
-            SqlDataReader reader = cmd1.ExecuteReader();
-            if (reader.Read())
-                if (int.Parse(reader[0].ToString()) == 0)
+            using (QUANLYTHUVIENEntities db = new QUANLYTHUVIENEntities())
+            {
+                var doimatkhauQuery = from dangnhap in db.DANGNHAPs
+                    where dangnhap.TENDANGNHAP == lblUserName.Text
+                    select dangnhap.DOIMATKHAU;
+                if (doimatkhauQuery.Any())
                 {
-                    label5.Visible = true;
+                    if (doimatkhauQuery.Single() == 0)
+                    {
+                        label5.Visible = true;
+                    }
+                    else MessageBox.Show("Không tìm thấy dữ liệu");
                 }
-                else MessageBox.Show("Không tìm thấy dữ liệu");
+            }
         }
 
         public static byte[] encryptData(string data)
@@ -53,14 +56,24 @@ namespace QUAN_LY_THU_VIEN
             {
                 if (tbxMKMoi.Text.ToString() == tbxMKMoiXN.Text.ToString())
                 {
-                    DataSet ds = new DataSet();
-                    SqlConnection Con = Conn.GetCon();
-                    Con.Open();
-                    SqlCommand cmd1 = new SqlCommand("update dangnhap set MatKhau ='" + md5(tbxMKMoi.Text.ToString()) + "', matkhaubandau = '' ,doimatkhau = 1 where tendangnhap = '"+ lblUserName.Text +"' ", Con);
-                    SqlDataAdapter da1 = new SqlDataAdapter(cmd1);
-                    da1.Fill(ds);
-                    MessageBox.Show("Đã đổi mật khẩu thành công .");
-                    this.Close();
+                    using (QUANLYTHUVIENEntities db = new QUANLYTHUVIENEntities())
+                    {
+                        var doimatkhauQuery = from dangnhap in db.DANGNHAPs
+                                              where dangnhap.TENDANGNHAP == lblUserName.Text
+                                              select dangnhap;
+                        if (doimatkhauQuery.Any())
+                        {
+                            DANGNHAP dangnhapObj = doimatkhauQuery.Single();
+                            dangnhapObj.MATKHAU = md5(tbxMKMoi.Text);
+                            dangnhapObj.MATKHAUBANDAU = "";
+                            dangnhapObj.DOIMATKHAU = 1;
+                            db.SaveChanges();
+
+                            MessageBox.Show("Đã đổi mật khẩu thành công .");
+                            this.Close();
+                        }
+
+                    }
                 }
                 else
                     MessageBox.Show("Mật khẩu xác nhận không đúng !!!");

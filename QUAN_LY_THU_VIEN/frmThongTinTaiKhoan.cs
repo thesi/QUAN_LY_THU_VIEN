@@ -106,7 +106,7 @@ namespace QUAN_LY_THU_VIEN
                     DataTable ds = new DataTable();
                     da.Fill(ds);
                     string ma = ds.Rows[0][0].ToString();
-                    string link = "C:\\HinhAnh\\" + ma + ".jpg";
+                    string link = ".\\HinhAnh\\nguoidung.jpg";
                     pictureBox1.Image = Image.FromFile(link);
                     tbxHoTen.Text = ds.Rows[0][2].ToString();
                     if (ds.Rows[0][6].ToString() == "1")
