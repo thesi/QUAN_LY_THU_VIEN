@@ -15,22 +15,19 @@ namespace QUAN_LY_THU_VIEN
     {
         public frmLogin() 
         {
-            
             InitializeComponent();
         }
 
         public int QuyenTruyCap()
         {
-            SqlConnection Con = Conn.GetCon();
-            Con.Open();
-            int quyen = 0;
-            string a = "select quyentruycap from dangnhap where tendangnhap = '" + frmMain.bientoancuc.bienxy + "'";
-            SqlCommand cmd1 = new SqlCommand(a, Con);
-            SqlDataReader reader = cmd1.ExecuteReader();
-            reader.Read();
-            string b = reader.GetValue(0).ToString();
-            quyen = Convert.ToInt32(b);
-            return quyen;
+            using (QUANLYTHUVIENEntities db = new QUANLYTHUVIENEntities())
+            {
+                var quyentruycapQuery = from dangnhap in db.DANGNHAPs
+                                        where dangnhap.TENDANGNHAP == frmMain.bientoancuc.bienxy
+                                        select dangnhap.QUYENTRUYCAP;
+                string quyen = quyentruycapQuery.Single().ToString();
+                return Convert.ToInt32(quyen);
+            }
         }
 
         private void btnOk_Click(object sender, EventArgs e)

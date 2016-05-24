@@ -13,7 +13,7 @@ namespace QUAN_LY_THU_VIEN
         {
             foreach(var quydinh in db.QUYDINHs)
             {
-
+               
             }
         }
     }

@@ -12,45 +12,42 @@ namespace QUAN_LY_THU_VIEN
 {
     public partial class frmCapLai : Form
     {
+
         public frmCapLai()
         {
             InitializeComponent();
         }
 
         private void btnXacNhan_Click(object sender, EventArgs e)
-        
         {
-           
-            SqlConnection con = Conn.GetCon();
-            string sql = ("select tendocgia,manhom,ngaysinh,gioitinh,socmnd from thongtindocgia where madocgia ='" + tbxMaDG.Text + "'");
-            SqlCommand cmd = new SqlCommand(sql, con);
-            con.Open();
-            SqlDataReader dr = cmd.ExecuteReader();
-            if (dr.Read())
+            using (QUANLYTHUVIENEntities db = new QUANLYTHUVIENEntities())
             {
-                tbxTenDG.Text = dr[0].ToString();
-                tbxMaNhom.Text = dr[1].ToString();
-                string manhom = dr[1].ToString();
-                tbxNSinh.Text = dr[2].ToString();
-                if (dr[3].ToString() == "1") tbxGioiTinh.Text = "Nam";
-                else tbxGioiTinh.Text = "Nữ";
-                tbxCMND.Text = dr[4].ToString();
-                string ma = tbxMaDG.Text;
-                string link = "C:\\HinhAnh\\" + ma + ".jpg";
-                pbxHinh.Image = Image.FromFile(link);
-                tbxNgaySinh.Text = tbxNSinh.Text.Substring(3, 2) + "/" + tbxNSinh.Text.Substring(0, 2) + "/" + tbxNSinh.Text.Substring(6, 4);
-                con.Close();
-                string sql1 = ("select tennhom from nhomdocgia where manhom ='" + manhom + "'");
-                SqlCommand cmd1 = new SqlCommand(sql1, con);
-                con.Open();
-                SqlDataReader dr1 = cmd1.ExecuteReader();
-                if (dr1.Read())
-                    tbxTenNhom.Text = dr1[0].ToString();
-            }
-            else
-            {
-                MessageBox.Show("Không tồn tại mã độc giã này !!!");
-               
+                var ttdgQuery = from ttdg in db.THONGTINDOCGIAs where ttdg.MADOCGIA == tbxMaDG.Text select ttdg;
+                if (ttdgQuery.Any())
+                {
+                    THONGTINDOCGIA objThongtindocgia = ttdgQuery.Single();
+                    tbxTenDG.Text = objThongtindocgia.TENDOCGIA;
+                    tbxMaNhom.Text = objThongtindocgia.MANHOM;
+                    string manhom = objThongtindocgia.MANHOM;
+                    tbxNSinh.Text = objThongtindocgia.NGAYSINH.ToString();
+                    if (objThongtindocgia.GIOITINH.ToString() == "1")
+                        tbxGioiTinh.Text = "Nam";
+                    else
+                        tbxGioiTinh.Text = "Nu";
+                    tbxCMND.Text = objThongtindocgia.SOCMND.ToString();
+                    string ma = tbxMaDG.Text;
+                    string link = ".\\HinhAnh\\nguoidung.jpg";
+                    pbxHinh.Image = Image.FromFile(link);
+                    tbxNgaySinh.Text = tbxNSinh.Text.Substring(3, 2) + "/" + tbxNSinh.Text.Substring(0, 2) + "/" +
+                                       tbxNSinh.Text.Substring(6, 4);
+
+                    var tennhomQuery = from nhom in db.NHOMDOCGIAs where nhom.MANHOM == manhom select nhom.TENNHOM;
+                    tbxTenNhom.Text = tennhomQuery.Single().ToString();
+                }
+                else
+                {
+                    MessageBox.Show("Không tồn tại mã độc giã này !!!");
+                }
             }
         }
 
