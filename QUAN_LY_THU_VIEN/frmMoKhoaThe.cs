@@ -33,47 +33,51 @@ namespace QUAN_LY_THU_VIEN
 
         private void btnMoKhoa_Click(object sender, EventArgs e)
         {
-            SqlConnection Con = Conn.GetCon();
-            Con.Open();
-            SqlCommand cmd1 = new SqlCommand("update thongtindocgia set trangthaidocgia = '1' where madocgia = '"+ cbbMaDocGia.Text.ToString() +"' ", Con);
-            SqlDataAdapter da1 = new SqlDataAdapter(cmd1);
-            DataSet ds1 = new DataSet();
-            da1.Fill(ds1);
-            MessageBox.Show("Đã mở khóa thành công.");
-            this.Close();
+            if (cbbMaDocGia.Text == "")
+            {
+                MessageBox.Show("Chưa chọn mã đọc giả để mở khóa !!!");
+            }
+            else
+            {
+                using (QUANLYTHUVIENEntities db = new QUANLYTHUVIENEntities())
+                {
+                    DataRow row = ((DataRowView)cbbMaDocGia.SelectedItem).Row;
+                    string madocgia = row[0].ToString();
+
+                    var thongtindocgiaQuery = from thongtindocgia in db.THONGTINDOCGIAs
+                                              where thongtindocgia.MADOCGIA == madocgia
+                                              select thongtindocgia;
+                    if (thongtindocgiaQuery.Any())
+                    {
+                        THONGTINDOCGIA ttdg = thongtindocgiaQuery.Single();
+                        ttdg.TRANGTHAIDOCGIA = 1;
+                        db.SaveChanges();
+                    }
+                    MessageBox.Show("Đã mở khóa thành công.");
+                }
+            }
+            cbbMaDocGia.DataSource = LayDuLieuMaDG();
+            cbbMaDocGia.ValueMember = "MaDocGia";
         }
 
         private void cbbMaDocGia_TextChanged(object sender, EventArgs e)
         {
-            SqlConnection Con = Conn.GetCon();
-            Con.Open();
-            string a = @"select
-                               thongtindocgia.tendocgia,thongtindocgia.ngaysinh, thongtindocgia.sodienthoaidocgia 
-                         from
-                                thongtindocgia
-                        where 
-                              thongtindocgia.madocgia = '" + cbbMaDocGia.Text + "'";
-            SqlCommand cmd = new SqlCommand(a, Con);
-            SqlDataReader reader = cmd.ExecuteReader();
-            
-            string ten = "";
-            string ngaysinh = "";
-            string sdt = "";
-            while (reader.Read())
+            using (QUANLYTHUVIENEntities db = new QUANLYTHUVIENEntities())
             {
-                ten = reader.GetValue(0).ToString();
-                ngaysinh = reader.GetValue(1).ToString();
-                sdt = reader.GetValue(2).ToString();
+                DataRow row = ((DataRowView)cbbMaDocGia.SelectedItem).Row;
+                string madocgia = row[0].ToString();
+
+                var thongtindocgiaQuery = from thongtindocgia in db.THONGTINDOCGIAs
+                                          where thongtindocgia.MADOCGIA == madocgia
+                                          select thongtindocgia;
+                if (thongtindocgiaQuery.Any())
+                {
+                    THONGTINDOCGIA ttdg = thongtindocgiaQuery.Single();
+                    tbxHoTen.Text = ttdg.TENDOCGIA;
+                    tbxNgaySinh.Text = ttdg.NGAYSINH.ToString();
+                    tbxSDT.Text = ttdg.SODIENTHOAIDOCGIA;
+                }
             }
-
-            reader.Close();
-            Con.Close();
-            
-            tbxHoTen.Text = "" + ten;
-            tbxNgaySinh.Text = "" + ngaysinh;
-            tbxSDT.Text = "" + sdt;
-
-            
         }
 
         private void cbbMaDocGia_Click(object sender, EventArgs e)

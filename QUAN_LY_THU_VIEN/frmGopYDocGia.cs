@@ -32,25 +32,8 @@ namespace QUAN_LY_THU_VIEN
                 lblMaDocGia.Text = obj.MADOCGIA;
                 lblTenDocGia.Text = obj.TENDOCGIA;
             }
-
-            
-/*            SqlConnection Con = Conn.GetCon();
-            Con.Open();
-            string a = @"select thongtindocgia.madocgia, thongtindocgia.TenDocGia from ThongTinDocGia, DangNhap
-                        where thongtindocgia.mataikhoan = dangnhap.mataikhoan and dangnhap.tendangnhap = '" + lblUser.Text.ToString() + "'";
-            SqlCommand cmd1 = new SqlCommand(a, Con);
-            SqlDataReader reader = cmd1.ExecuteReader();
-            string b = "";
-            string d = "";
-            while (reader.Read())
-            {
-                b = reader.GetValue(0).ToString();
-                d = reader.GetValue(1).ToString();
-            }
-            Con.Close();
-            lblMaDocGia.Text = b.ToString();
-            lblTenDocGia.Text = d.ToString();*/
         }
+
         string ThemMaGopY()
         {
             SqlConnection Con = Conn.GetCon();
@@ -78,19 +61,23 @@ namespace QUAN_LY_THU_VIEN
             b = "GY" + f + e;
             return b;
         }
+
         private void btnGopY_Click(object sender, EventArgs e)
         {
-            SqlConnection Con = Conn.GetCon();
-            Con.Open();
-            ThemMaGopY();
-            SqlCommand cmd = new SqlCommand("update GopYDocGia set MaDocGia = '"+ lblMaDocGia.Text +"', NoiDung = '"+ tbxGopY.Text +"', tieude = '"+ tbxTieuDe.Text+"', email = '"+ tbxEmail.Text +"' where magopy = (select max(magopy) from gopydocgia)", Con);
-            
-            DataSet dataSet1 = new DataSet();
-            SqlDataAdapter dar = new SqlDataAdapter(cmd);
-            dar.Fill(dataSet1);
-            MessageBox.Show("Đã gửi thành công. Cám ơn Độc Giả đã quan tâm.");
-            this.Close();
-               
+            string magopy = ThemMaGopY();
+            using (QUANLYTHUVIENEntities db = new QUANLYTHUVIENEntities())
+            {
+                GOPYDOCGIA gopydocgia = new GOPYDOCGIA();
+                gopydocgia.MAGOPY = magopy;
+                gopydocgia.MADOCGIA = lblMaDocGia.Text;
+                gopydocgia.NOIDUNG = tbxGopY.Text;
+                gopydocgia.TIEUDE = tbxTieuDe.Text;
+                gopydocgia.EMAIL = tbxEmail.Text;
+                db.SaveChanges();
+
+                MessageBox.Show("Đã gửi thành công. Cám ơn Độc Giả đã quan tâm.");
+                this.Close();
+            }
         }
 
         private void button1_Click(object sender, EventArgs e)

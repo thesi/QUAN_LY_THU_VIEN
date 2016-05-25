@@ -224,7 +224,7 @@ namespace QUAN_LY_THU_VIEN
                     select  quydinh.LEPHICAPTHE;
                 if (lephicaptheQuery.Any())
                 {
-                    lblPhiNhom.Text = lephicaptheQuery.Single().ToString();
+                    lblPhiNhom.Text = lephicaptheQuery.First().ToString();
                 }
                 else lblPhiNhom.Text = "0";
             }

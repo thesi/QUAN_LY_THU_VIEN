@@ -15,7 +15,10 @@ namespace QUAN_LY_THU_VIEN
         public frmKhoaThe()
         {
             InitializeComponent();
+            cbbMaDocGia.DataSource = LayDuLieuMaDG();
+            cbbMaDocGia.ValueMember = "MaDocGia";
         }
+
         public DataTable LayDuLieuMaDG()
         {
             SqlConnection Con = Conn.GetCon();
@@ -28,8 +31,6 @@ namespace QUAN_LY_THU_VIEN
 
         private void cbbMaDocGia_MouseClick(object sender, MouseEventArgs e)
         {
-            cbbMaDocGia.DataSource = LayDuLieuMaDG();
-            cbbMaDocGia.ValueMember = "MaDocGia";
         }
 
         private void btnChuyenNhom_Click(object sender, EventArgs e)
@@ -40,45 +41,46 @@ namespace QUAN_LY_THU_VIEN
             }
             else
             {
-                SqlConnection Con = Conn.GetCon();
-                DataSet ds = new DataSet();
-                SqlCommand cmd2 = new SqlCommand("update ThongTinDocGia set TrangThaiDocGia = 0 where madocgia = '"+ cbbMaDocGia.Text.ToString() +"'", Con);
-                SqlDataAdapter da2 = new SqlDataAdapter(cmd2);
-                da2.Fill(ds);
-                MessageBox.Show("Đã khóa tài khoản của đọc giả : " + cbbMaDocGia.Text.ToString());
+                using (QUANLYTHUVIENEntities db = new QUANLYTHUVIENEntities())
+                {
+                    DataRow row = ((DataRowView) cbbMaDocGia.SelectedItem).Row;
+                    string madocgia = row[0].ToString();
+
+                    var thongtindocgiaQuery = from thongtindocgia in db.THONGTINDOCGIAs
+                        where thongtindocgia.MADOCGIA == madocgia
+                        select thongtindocgia;
+                    if (thongtindocgiaQuery.Any())
+                    {
+                        THONGTINDOCGIA ttdg = thongtindocgiaQuery.Single();
+                        ttdg.TRANGTHAIDOCGIA = 0;
+                        db.SaveChanges();
+                    }
+                    MessageBox.Show("Đã khóa tài khoản của đọc giả : " + cbbMaDocGia.Text.ToString());
+                }
             }
+
+            cbbMaDocGia.DataSource = LayDuLieuMaDG();
+            cbbMaDocGia.ValueMember = "MaDocGia";
         }
 
         private void cbbMaDocGia_TextChanged(object sender, EventArgs e)
         {
-            SqlConnection Con = Conn.GetCon();
-            Con.Open();
-            string a = @"select
-                               thongtindocgia.tendocgia,thongtindocgia.ngaysinh, thongtindocgia.sodienthoaidocgia 
-                         from
-                                thongtindocgia
-                        where 
-                              thongtindocgia.madocgia = '" + cbbMaDocGia.Text + "'";
-            SqlCommand cmd = new SqlCommand(a, Con);
-            SqlDataReader reader = cmd.ExecuteReader();
-
-            string ten = "";
-            string ngaysinh = "";
-            string sdt = "";
-            while (reader.Read())
+            using (QUANLYTHUVIENEntities db = new QUANLYTHUVIENEntities())
             {
-                ten = reader.GetValue(0).ToString();
-                ngaysinh = reader.GetValue(1).ToString();
-                sdt = reader.GetValue(2).ToString();
+                DataRow row = ((DataRowView)cbbMaDocGia.SelectedItem).Row;
+                string madocgia = row[0].ToString();
+
+                var thongtindocgiaQuery = from thongtindocgia in db.THONGTINDOCGIAs
+                                          where thongtindocgia.MADOCGIA == madocgia
+                                          select thongtindocgia;
+                if (thongtindocgiaQuery.Any())
+                {
+                    THONGTINDOCGIA ttdg = thongtindocgiaQuery.Single();
+                    tbxHoTen.Text = ttdg.TENDOCGIA;
+                    tbxNgaySinh.Text = ttdg.NGAYSINH.ToString();
+                    tbxSDT.Text = ttdg.SODIENTHOAIDOCGIA;
+                }
             }
-
-            reader.Close();
-            Con.Close();
-
-            tbxHoTen.Text = "" + ten;
-            tbxNgaySinh.Text = "" + ngaysinh;
-            tbxSDT.Text = "" + sdt;
-
         }
 
         private void btnHuy_Click(object sender, EventArgs e)

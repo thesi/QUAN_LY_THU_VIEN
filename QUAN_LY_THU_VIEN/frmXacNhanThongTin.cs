@@ -35,7 +35,8 @@ namespace QUAN_LY_THU_VIEN
                 else tbxGioiTinh.Text = "Nữ";
                 tbxCMND.Text = dr[4].ToString();
                 string ma = tbxMaDG.Text;
-                string link = "C:\\HinhAnh\\" + ma + ".jpg";
+                //string link = "C:\\HinhAnh\\" + ma + ".jpg";
+                string link = ".\\HinhAnh\\nguoidung.jpg";
                 pbxHinh.Image = Image.FromFile(link);
                 tbxNgaySinh.Text = tbxNSinh.Text.Substring(3, 2) + "/" + tbxNSinh.Text.Substring(0, 2) + "/" + tbxNSinh.Text.Substring(6, 4);
                 con.Close();
